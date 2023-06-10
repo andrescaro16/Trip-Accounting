@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_extra_cost_extra_costs",
+  "info": {
+    "displayName": "ExtraCost",
+    "icon": "plus",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}

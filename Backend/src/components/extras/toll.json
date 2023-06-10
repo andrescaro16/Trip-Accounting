@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_toll_tolls",
+  "info": {
+    "displayName": "Toll",
+    "icon": "car",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}

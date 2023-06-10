@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trips",
+  "info": {
+    "singularName": "trip",
+    "pluralName": "trips",
+    "displayName": "Trip",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "toll": {
+      "type": "component",
+      "repeatable": false,
+      "component": "extras.toll"
+    },
+    "town": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::town.town"
+    },
+    "arrivalTime": {
+      "type": "time",
+      "required": true
+    },
+    "departureTime": {
+      "type": "time",
+      "required": true
+    },
+    "extraCost": {
+      "type": "component",
+      "repeatable": false,
+      "component": "extras.extra-cost"
+    }
+  }
+}
