@@ -1,0 +1,113 @@
+.login-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 600px;
+	width: 280px;
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	padding: 20px;
+	background-color: #f9f9f9;
+}
+
+.login-truck-animation{
+	height: 300px;
+	width: 100%;
+	margin-top: -40px;
+	margin-bottom: -40px;
+}
+  
+.login-title {
+	font-size: 30px;
+	max-width: 226px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color: #111;
+}
+  
+.login-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-grow: 1;
+	width: 100%;
+}
+
+.login-content-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	margin-top: -20px;
+	position: relative;
+}
+  
+.login-label-username,
+.login-label-password {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 5px;
+	color: #111;
+}
+  
+.login-input-username,
+.login-input-password {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	width: calc(100% - 40px);
+}
+
+.login-input-username:focus,
+.login-input-password:focus {
+	outline: none;
+	border-color: #007bff;
+}
+
+.login-toggle-button {
+	margin-top: 10px;
+	background-color: transparent;
+	border: none;
+	color: #007bff;
+	cursor: pointer;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 21px;
+	right: 8px;
+}
+  
+.login-toggle-button:focus {
+	outline: none;
+}
+
+.login-error {
+	color: red;
+	font-size: 14px;
+	margin: 0 0;
+}
+
+.login-button {
+	margin: 8px;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+}
+  
+.login-button:hover {
+	background-color: #0056b3;
+}
+  
