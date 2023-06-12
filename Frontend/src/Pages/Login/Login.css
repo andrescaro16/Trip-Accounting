@@ -61,7 +61,7 @@
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-	width: calc(100% - 40px);
+	width: calc(100% - 25px);
 }
 
 .login-input-username:focus,
@@ -83,7 +83,7 @@
 	justify-content: center;
 	position: absolute;
 	top: 21px;
-	right: 8px;
+	right: 18px;
 }
   
 .login-toggle-button:focus {
