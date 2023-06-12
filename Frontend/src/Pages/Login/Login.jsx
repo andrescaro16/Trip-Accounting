@@ -19,7 +19,7 @@ function Login() {
 	function onSubmit(event) {
 		event.preventDefault();
 		if(event.target[0].value === `${process.env.REACT_APP_USERNAME}` && event.target[1].value === `${process.env.REACT_APP_PASSWORD}`) {
-			navigate('/home');
+			navigate('/homepage');
 		} else {
 			setError(true);
 		}
