@@ -7,13 +7,22 @@ export function FetchData(url, method = "GET", data = null){
 }
 
 export async function getTowns(){
-    const { result: towns, loading, error } = FetchData("towns");
-    const result = {
-        towns,
-        loading,
-        error,
-    };
-    return result;
+    try {
+        const options = {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${process.env.REACT_APP_STRAPI_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: null,
+        };
+        const res = await fetch(`${port}towns`, options);
+        const towns = await res.json();
+        return towns;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
 export async function getTown(id){
@@ -68,13 +77,22 @@ export async function getTrip(id){
 }
 
 export async function postTrip(data){
-    const { result, loading, error } = FetchData("trips", "POST", data);
-    const res = {
-        result,
-        loading,
-        error,
-    };
-    return res;
+    try {
+        const options = {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${process.env.REACT_APP_STRAPI_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        };
+        const res = await fetch(`${port}trips`, options);
+        const tripsResponse = await res.json();
+        return tripsResponse;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
 export async function deleteTrip(id){

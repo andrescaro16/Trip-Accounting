@@ -1,0 +1,166 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+
+.trip-form-background{
+	width: 100vw;
+	height: 100vh;
+}
+
+.trip-form-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	position: fixed;
+	top: 50px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	max-height: calc(100vh - 100px);
+	width: 90%;
+	max-width: 500px;
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	padding: 20px;
+	margin: auto;
+	background-color: #fefefe;
+	text-align: center;
+	overflow: auto;
+}
+
+.trip-form-title{
+	font-size: 30px;
+	max-width: 226px;
+	font-weight: bold;
+	margin: 20px;
+	margin-bottom: 40px;
+	color: #111;
+}
+
+.trip-form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+	width: 100%;
+}
+
+.date-input-field,
+.departure-time-input-field,
+.route-input-field,
+.tollCheck-input-field,
+.toll-input-field,
+.extraCostCheck-input-field,
+.extraCost-input-field,
+.arrival-time-input-field{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.tollCheck-input-field,
+.extraCostCheck-input-field{
+	margin-bottom: 16px;
+}
+
+.trip-form label{
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 5px;
+	color: #111;
+}
+
+.mantine-gszoqu{ /* Mantine input style default (date-input) */
+	width: 100%		!important;
+}
+
+.css-1fdsijx-ValueContainer{ /* React-Select input style default (route-select) */
+	padding: 0	!important;
+}
+
+.css-qbdosj-Input{
+	margin: 0	!important;
+	padding: 0	!important;
+}
+
+.trip-form input,
+.trip-form .date-input,
+.trip-form .route-select{
+	width: 80%;
+	height: 2.25rem;
+	max-width: 500px;
+	font-size: 0.875rem;
+	margin-bottom: 16px;
+	text-align: center;
+}
+
+.trip-form .departure-time-input-field input,
+.trip-form .toll-input-field input,
+.trip-form .extraCost-input-field input,
+.trip-form .arrival-time-input-field input{
+	border: 1px solid #ccc	!important;
+	border-radius: 0.25rem;
+}
+
+.trip-form input:focus,
+.trip-form .date-input:focus,
+.trip-form .route-select:focus{
+	outline: none;
+	border-color: #007bff	!important;
+}
+
+.check-container{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.check-container label{
+	margin-right: 8px;
+}
+
+.tollCheck-input,
+.extraCost-input{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	width: 16px	!important;
+	margin-bottom: 0px	!important;
+}
+
+.toll-input-field,
+.extraCost-input-field {
+	display: none;
+}
+
+.toll-input-field,
+.extraCost-input-field {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.submit-button-tripForm{
+	width: 185px;
+	margin: 8px;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	text-decoration: none;
+	cursor: pointer;
+}
+ 

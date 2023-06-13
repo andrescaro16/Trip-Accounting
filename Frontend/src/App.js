@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "./Pages/Login/Login";
 import { Homepage } from "./Pages/Homepage/Homepage";
+import { TripForm } from "./Pages/TripForm/TripForm";
+import { Report } from "./Pages/Report/Report";
 
 function App() {
 
@@ -13,9 +15,9 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/homepage" element={<Homepage />} />
 
-          <Route path="/add-trip" element={<h1>Add Trip</h1>} />
+          <Route path="/add-trip" element={<TripForm />} />
 
-          <Route path="/viatic-salary" element={<h1>Viatic and Salary</h1>} />
+          <Route path="/report" element={<Report />} />
 
           <Route path="/trip-history" element={<h1>History</h1>} />
           <Route path="/edit-trip/:id" element={<h1>Edit Trip</h1>} />

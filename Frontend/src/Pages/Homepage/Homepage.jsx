@@ -13,7 +13,7 @@ function Homepage() {
 			<h3 className='homepage-subtitle'>¿Qué deseas hacer?</h3>
 			<div className='homepage-buttons-container'>
 				<Link to='/add-trip' className='homepage-button'>Añadir viaje</Link>
-				<Link to='/viatic-salary' className='homepage-button'>Ver viáticos y salarios</Link>
+				<Link to='/report' className='homepage-button'>Ver viáticos y salarios</Link>
 				<Link to='/trip-history' className='homepage-button'>Ver historial de viajes</Link>
 				<Link to='/towns' className='homepage-button'>Ver pueblos</Link>
 			</div>
