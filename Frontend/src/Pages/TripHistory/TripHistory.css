@@ -1,0 +1,132 @@
+.trip-history-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 90%;
+	margin: auto;
+}
+
+.trip-history-header-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 80%;
+	max-width: 1000px;
+	align-items: center;
+	margin-left: -60px;
+}
+
+.truck-trip-history {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.trip-history-title {
+	font-size: 4vw;
+	font-weight: 600;
+	color: #111;
+	text-shadow: 0px 0 5px #ccc;
+}
+
+.trip-history-title span {
+	font-size: 3vw;
+	color: #242424;
+}
+
+.accordion-item{
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #d1d1d1;
+	background-color: #fcfcfc;
+	font-size: 14px;
+}
+
+.control{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+/* .route{
+
+} */
+
+.right-container{
+	display: flex;
+	align-items: center;
+}
+
+.date{
+	font-size: 13px;
+	margin-right: 4px;
+	margin-left: 8px;
+}
+
+.edit{
+	width: 20px;
+	height: 18px;
+	display: flex;
+	justify-content: center;
+	margin-right: 4px;
+}
+
+.mantine-Accordion-chevron{	/*chevron icon*/ 
+	margin-left: 0;
+}
+
+.panel{
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.panel-left{
+	margin-right: 8px;
+}
+
+.panel-bottom{
+	display: flex;
+	justify-content: start;
+	align-items: center;
+}
+
+.panel-bottom-container{
+	margin-right: 8px;
+}
+
+.panel-title{
+	font-weight: 700;
+	margin-bottom: 18px;
+}
+
+.delete-button{
+	margin: 8px;
+	padding: 10px 15px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+
+
+
+@media (max-width: 650px) {
+	.trip-history-header-container {
+		width: 100%;
+		margin-left: -20px;
+	}
+	.trip-history-title {
+		font-size: 5vw;
+		font-weight: 600;
+		color: #111;
+	}
+	.trip-history-title span {
+		font-size: 5vw;
+		color: #242424;
+	}
+}

@@ -24,7 +24,6 @@ function TripForm() {
 		async function fetchTowns() {
 		  try {
 			const response = await getTowns();
-			console.log(response.data);
 			setTowns(response.data);
 		  } catch (error) {
 			console.log(error);
@@ -93,7 +92,6 @@ function TripForm() {
 			  }
 			} catch (error) {
 			  console.log(error);
-
 			}
 		}
 		addTrip();

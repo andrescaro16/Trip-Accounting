@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login } from "./Pages/Login/Login";
-import { Homepage } from "./Pages/Homepage/Homepage";
-import { TripForm } from "./Pages/TripForm/TripForm";
-import { Report } from "./Pages/Report/Report";
+import { Login } from "../Pages/Login/Login";
+import { Homepage } from "../Pages/Homepage/Homepage";
+import { TripForm } from "../Pages/TripForm/TripForm";
+import { Report } from "../Pages/Report/Report";
+import { TripHistory } from "../Pages/TripHistory/TripHistory";
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
 
           <Route path="/report" element={<Report />} />
 
-          <Route path="/trip-history" element={<h1>History</h1>} />
+          <Route path="/trip-history" element={<TripHistory />} />
           <Route path="/edit-trip/:id" element={<h1>Edit Trip</h1>} />
 
           <Route path="/towns" element={<h1>Towns</h1>} />

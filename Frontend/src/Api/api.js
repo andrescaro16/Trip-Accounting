@@ -57,13 +57,22 @@ export async function postTown(data){
 }
 
 export async function getTrips(){
-    const { result: trips, loading, error } = FetchData("trips?populate=*");
-    const result = {
-        trips,
-        loading,
-        error,
-    };
-    return result;
+    try {
+        const options = {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${process.env.REACT_APP_STRAPI_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: null,
+        };
+        const res = await fetch(`${port}trips?populate=*`, options);
+        const trips = await res.json();
+        return trips;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
 export async function getTrip(id){
