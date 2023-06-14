@@ -64,7 +64,6 @@ function TripHistory() {
 							<div className='control'>
 								<span className='route'>{trip.attributes.town.data.attributes.route}</span>
 								<div className='right-container'>
-									<span className='date'>{trip.attributes.date}</span>
 									<Link to={`/edit-trip/${trip.id}`} className='edit'><FiEdit color='#111'/></Link>
 								</div>
 							</div>

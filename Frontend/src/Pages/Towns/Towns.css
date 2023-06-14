@@ -1,4 +1,4 @@
-.trip-history-container {
+.towns-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -8,28 +8,29 @@
 	margin-bottom: 300px;
 }
 
-.trip-history-header-container {
+.towns-header-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	width: 80%;
 	max-width: 1000px;
 	align-items: center;
 	margin-left: -60px;
+	margin-bottom: 16px;
 }
 
-.truck-trip-history {
+.house-towns {
 	max-width: 100%;
 	max-height: 100%;
 }
 
-.trip-history-title {
+.towns-title {
 	font-size: 4vw;
 	font-weight: 600;
 	color: #111;
 	text-shadow: 0px 0 5px #ccc;
 }
 
-.trip-history-title span {
+.towns-title span {
 	font-size: 3vw;
 	color: #242424;
 }
@@ -50,10 +51,6 @@
 	width: 100%;
 }
 
-/* .route{
-
-} */
-
 .right-container{
 	display: flex;
 	align-items: center;
@@ -73,7 +70,7 @@
 .panel{
 	padding: 10px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: start;
 }
 
 .panel-left{
@@ -87,18 +84,9 @@
 	padding: 0 10px;
 }
 
-.panel-bottom-container{
-	margin-right: 8px;
-}
-
 .panel-title{
 	font-weight: 700;
 	margin-bottom: 18px;
-}
-
-.date-format{
-	font-size: 12px;
-	color: #111;
 }
 
 .delete-button{
@@ -114,16 +102,16 @@
 
 
 @media (max-width: 650px) {
-	.trip-history-header-container {
+	.towns-header-container {
 		width: 130%;
 		margin-left: 10px;
 	}
-	.trip-history-title {
+	.towns-title {
 		font-size: 5vw;
 		font-weight: 600;
 		color: #111;
 	}
-	.trip-history-title span {
+	.towns-title span {
 		font-size: 5vw;
 		color: #242424;
 	}
