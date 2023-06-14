@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 import { DateInput } from '@mantine/dates';
 import { getTowns, postTrip } from '../../Api/api';
-import { Modal } from '../../Modal/Modal';
+import { Modal } from '../../Components/Modal/Modal';
 import './TripForm.css';
 
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Player } from '@lottiefiles/react-lottie-player';
-import truckSuccess from "../Assets/Animations/truckSuccess.json";
-import error from "../Assets/Animations/error.json";
+import truckSuccess from "../../Assets/Animations/truckSuccess.json";
+import error from "../../Assets/Animations/error.json";
 import "./Modal.css";
 
 function Modal({status}) {

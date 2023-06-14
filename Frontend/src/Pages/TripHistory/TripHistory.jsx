@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Accordion } from '@mantine/core';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { getTrips } from '../../Api/api';
+import { Loading } from '../../Components/Loading/Loading';
 import truck from '../../Assets/Animations/truckDriving.json';
 import { FiEdit } from 'react-icons/fi';
 import './TripHistory.css';
@@ -11,13 +12,16 @@ import './TripHistory.css';
 function TripHistory() {
 
 	const [trips, setTrips] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	// ----------------------------[Get trips]----------------------------
 	useEffect(() => {
 		async function fetchTrips() {
 			try {
+				setLoading(true);
 				const response = await getTrips();
 				setTrips(response.data);
+				setLoading(false);
 				console.log("Hey", response.data);
 			} catch (error) {
 				console.log(error);
@@ -28,6 +32,7 @@ function TripHistory() {
 
 	return (
 		<>
+
 		<div className='trip-history-container'>
 			<div className='trip-history-header-container'>
 
@@ -35,6 +40,18 @@ function TripHistory() {
 
 				<h1 className='trip-history-title'>Historial de viajes<br/> <span>Mr. Tatan</span></h1>
 			</div>
+			{loading && (
+				<>
+					<Loading />
+					<Loading />
+					<Loading />
+					<Loading />
+					<Loading />
+					<Loading />
+					<Loading />
+					<Loading />
+				</>
+			)}
 			<Accordion variant="separated" >
 				{trips?.map((trip) => (
 					<Accordion.Item value={`${trip.id}`} key={`${trip.id}`} className='accordion-item'>
