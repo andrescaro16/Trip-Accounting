@@ -12,6 +12,7 @@ import './TripHistory.css';
 function TripHistory() {
 
 	const [trips, setTrips] = useState([]);
+	const [orderedTrips, setOrderedTrips] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	// ----------------------------[Get trips]----------------------------
@@ -22,7 +23,6 @@ function TripHistory() {
 				const response = await getTrips();
 				setTrips(response.data);
 				setLoading(false);
-				console.log("Hey", response.data);
 			} catch (error) {
 				console.log(error);
 			}
@@ -30,9 +30,14 @@ function TripHistory() {
 		fetchTrips();
 	}, []);
 
+	useEffect(() => {
+		setOrderedTrips(trips.sort((a, b) => {
+			return new Date(b.attributes.date) - new Date(a.attributes.date);
+		}));
+	}, [trips])
+
 	return (
 		<>
-
 		<div className='trip-history-container'>
 			<div className='trip-history-header-container'>
 
@@ -53,7 +58,7 @@ function TripHistory() {
 				</>
 			)}
 			<Accordion variant="separated" >
-				{trips?.map((trip) => (
+				{orderedTrips?.map((trip) => (
 					<Accordion.Item value={`${trip.id}`} key={`${trip.id}`} className='accordion-item'>
 						<Accordion.Control>
 							<div className='control'>
@@ -68,7 +73,7 @@ function TripHistory() {
 							<div className='panel'>
 								<div className='panel-left'>
 									<div className='panel-left-container'>
-										<span className='panel-title'>Fecha</span> <br />
+										<span className='panel-title'>Fecha <span className='date-format'>(yyyy-mm-dd)</span></span> <br />
 										<span className='panel-left-value'>{trip.attributes.date}</span>
 									</div>
 									<div className='panel-left-container'>
