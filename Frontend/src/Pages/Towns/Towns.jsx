@@ -12,7 +12,6 @@ import './Towns.css';
 function Towns() {
 
 	const [towns, setTowns] = useState([]);
-	const [orderedTowns, setOrderedTowns] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	// ----------------------------[Get towns]----------------------------
@@ -21,8 +20,8 @@ function Towns() {
 			try {
 				setLoading(true);
 				const response = await getTowns();
-				console.log(response.data);
-				setTowns(response.data);
+				const dots = await dotsInPrices(response.data);
+				setTowns(dots);
 				setLoading(false);
 			} catch (error) {
 				console.log(error);
@@ -30,6 +29,22 @@ function Towns() {
 		}
 		fetchtowns();
 	}, []);
+
+	function dotsInPrices(data) {
+		const towns = data?.map((town) => {
+			const viatic = town.attributes.viatic.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			const salary = town.attributes.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			return {
+				...town,
+				attributes: {
+					...town.attributes,
+					viatic,
+					salary,
+				},
+			};
+		});
+		return towns;
+	}
 
 
 	return (

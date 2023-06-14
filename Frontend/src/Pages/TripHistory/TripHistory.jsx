@@ -21,7 +21,8 @@ function TripHistory() {
 			try {
 				setLoading(true);
 				const response = await getTrips();
-				setTrips(response.data);
+				const dots = await dotsInPrices(response.data);
+				setTrips(dots);
 				setLoading(false);
 			} catch (error) {
 				console.log(error);
@@ -35,6 +36,48 @@ function TripHistory() {
 			return new Date(b.attributes.date) - new Date(a.attributes.date);
 		}));
 	}, [trips])
+
+	function dotsInPrices(data) {
+		const trips = data?.map((trip) => {
+			const viatic = trip.attributes.town.data.attributes.viatic.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			const salary = trip.attributes.town.data.attributes.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			const toll = trip.attributes.toll?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			const extraCost = trip.attributes.extraCost?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			return {
+				...trip,
+				attributes: {
+					...trip.attributes,
+					town: {
+						data: {
+							...trip.attributes.town.data,
+							attributes: {
+								...trip.attributes.town.data.attributes,
+								viatic,
+								salary,
+							}
+						}
+					},
+					...(toll
+						? {
+							toll: {
+							  ...trip.attributes.toll,
+							  price: toll
+							}
+						  }
+						: {}),
+					...(extraCost
+						? {
+							extraCost: {
+								...trip.attributes.extraCost,
+								price: extraCost,
+							}
+						}
+						: {}),
+				},
+			};
+		});
+		return trips;
+	}
 
 	return (
 		<>
