@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion } from '@mantine/core';
 import { Player } from '@lottiefiles/react-lottie-player';
-import { getTrips } from '../../Api/api';
+import { getTrips, deleteTrip as deleteTripApi } from '../../Api/api';
 import { Loading } from '../../Components/Loading/Loading';
+import { Modal } from '../../Components/Modal/Modal';
 import truck from '../../Assets/Animations/truckDriving.json';
 import { FiEdit } from 'react-icons/fi';
 import './TripHistory.css';
+
+import { useStateContext } from '../../Context/useStateContext';
 
 
 function TripHistory() {
@@ -14,6 +17,10 @@ function TripHistory() {
 	const [trips, setTrips] = useState([]);
 	const [orderedTrips, setOrderedTrips] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [idToDelete, setIdToDelete] = useState(null);
+
+	const { deleteItemModal, deleteTrip, setDeleteItemModal, setDeleteTrip } = useStateContext();
+
 
 	// ----------------------------[Get trips]----------------------------
 	useEffect(() => {
@@ -22,6 +29,7 @@ function TripHistory() {
 				setLoading(true);
 				const response = await getTrips();
 				const dots = await dotsInPrices(response.data);
+				console.log(dots);
 				setTrips(dots);
 				setLoading(false);
 			} catch (error) {
@@ -79,8 +87,38 @@ function TripHistory() {
 		return trips;
 	}
 
+
+	// ----------------------------[Delete item]----------------------------
+	function onDeleteItem (id) {
+		setDeleteItemModal(true);
+		setIdToDelete(id);
+	}
+
+	useEffect(() => {
+		console.log("Entré al useEffect de deleteItem");
+		if (deleteTrip) {
+			const newTrips = trips.filter((trip) => trip.id !== idToDelete);
+			console.log("newTrips",newTrips);
+
+			async function deleteFetch() {
+				try {
+					const response = await deleteTripApi(idToDelete);
+					console.log("response",response);
+				} catch (error) {
+					console.log(error);
+				}
+			}
+			deleteFetch();
+
+			setTrips(newTrips);
+			setDeleteTrip(false);
+		}
+	}, [ deleteTrip ]);
+
+
 	return (
 		<>
+		{deleteItemModal && <Modal status='deleteConfirmationTrip'/>}
 		<div className='trip-history-container'>
 			<div className='trip-history-header-container'>
 
@@ -159,7 +197,7 @@ function TripHistory() {
 									<span className='panel-title'>Salario</span> <br />
 									<span className='panel-bottom-value'>{trip.attributes.town.data.attributes.salary}</span>
 								</div>
-								<button className='delete-button'>Eliminar</button>
+								<button className='delete-button' onClick={() => onDeleteItem(trip.id)}>Eliminar</button>
 							</div>
 						</Accordion.Panel>
 					</Accordion.Item>

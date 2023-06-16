@@ -2,17 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion } from '@mantine/core';
 import { Player } from '@lottiefiles/react-lottie-player';
-import { getTowns } from '../../Api/api';
+import { getTowns, deleteTown as deleteTownApi } from '../../Api/api';
 import { Loading } from '../../Components/Loading/Loading';
+import { Modal } from '../../Components/Modal/Modal';
 import house from '../../Assets/Animations/house.json';
 import { FiEdit } from 'react-icons/fi';
 import './Towns.css';
+
+import { useStateContext } from '../../Context/useStateContext';
 
 
 function Towns() {
 
 	const [towns, setTowns] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [idToDelete, setIdToDelete] = useState(null);
+
+	const { deleteItemModal, deleteTown, setDeleteItemModal, setDeleteTown } = useStateContext();
 
 	// ----------------------------[Get towns]----------------------------
 	useEffect(() => {
@@ -21,6 +27,7 @@ function Towns() {
 				setLoading(true);
 				const response = await getTowns();
 				const dots = await dotsInPrices(response.data);
+				console.log(dots);
 				setTowns(dots);
 				setLoading(false);
 			} catch (error) {
@@ -47,8 +54,37 @@ function Towns() {
 	}
 
 
+	// ----------------------------[Delete item]----------------------------
+	function onDeleteItem (id) {
+		setDeleteItemModal(true);
+		setIdToDelete(id);
+	}
+
+	useEffect(() => {
+		console.log("Entré al useEffect de deleteItem");
+		if (deleteTown) {
+			const newTowns = towns.filter((town) => town.id !== idToDelete);
+			console.log("newTowns",newTowns);
+
+			async function deleteFetch() {
+				try {
+					const response = await deleteTownApi(idToDelete);
+					console.log("response",response);
+				} catch (error) {
+					console.log(error);
+				}
+			}
+			deleteFetch();
+
+			setTowns(newTowns);
+			setDeleteTown(false);
+		}
+	}, [ deleteTown ]);
+
+
 	return (
 		<>
+		{deleteItemModal && <Modal status="deleteConfirmationTown"/>}
 		<div className='towns-container'>
 			<div className='towns-header-container'>
 
@@ -95,7 +131,7 @@ function Towns() {
 								</div>
 							</div>
 							<div className='panel-bottom'>
-								<button className='delete-button'>Eliminar</button>
+								<button className='delete-button' onClick={() => onDeleteItem(town.id)}>Eliminar</button>
 							</div>
 						</Accordion.Panel>
 					</Accordion.Item>

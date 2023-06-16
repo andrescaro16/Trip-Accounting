@@ -56,6 +56,25 @@ export async function postTown(data){
     return res;
 }
 
+export async function deleteTown(id){
+    try {
+        const options = {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${process.env.REACT_APP_STRAPI_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: null,
+        };
+        const res = await fetch(`${port}towns/${id}`, options);
+        const townResponse = await res.json();
+        return townResponse;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
 export async function getTrips(){
     try {
         const options = {
@@ -105,11 +124,20 @@ export async function postTrip(data){
 }
 
 export async function deleteTrip(id){
-    const { result, loading, error } = FetchData(`trips/${id}`, "DELETE");
-    const res = {
-        result,
-        loading,
-        error,
-    };
-    return res;
+    try {
+        const options = {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${process.env.REACT_APP_STRAPI_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: null,
+        };
+        const res = await fetch(`${port}trips/${id}`, options);
+        const tripsResponse = await res.json();
+        return tripsResponse;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
