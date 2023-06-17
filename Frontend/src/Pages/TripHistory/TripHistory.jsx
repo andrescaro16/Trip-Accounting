@@ -29,7 +29,6 @@ function TripHistory() {
 				setLoading(true);
 				const response = await getTrips();
 				const dots = await dotsInPrices(response.data);
-				console.log(dots);
 				setTrips(dots);
 				setLoading(false);
 			} catch (error) {
@@ -95,11 +94,8 @@ function TripHistory() {
 	}
 
 	useEffect(() => {
-		console.log("Entré al useEffect de deleteItem");
 		if (deleteTrip) {
 			const newTrips = trips.filter((trip) => trip.id !== idToDelete);
-			console.log("newTrips",newTrips);
-
 			async function deleteFetch() {
 				try {
 					const response = await deleteTripApi(idToDelete);
@@ -109,7 +105,6 @@ function TripHistory() {
 				}
 			}
 			deleteFetch();
-
 			setTrips(newTrips);
 			setDeleteTrip(false);
 		}

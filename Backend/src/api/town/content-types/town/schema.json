@@ -23,6 +23,12 @@
     "salary": {
       "type": "decimal",
       "required": true
+    },
+    "trips": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::trip.trip",
+      "mappedBy": "town"
     }
   }
 }

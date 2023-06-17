@@ -23,8 +23,9 @@
     },
     "town": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::town.town"
+      "relation": "manyToOne",
+      "target": "api::town.town",
+      "inversedBy": "trips"
     },
     "arrivalTime": {
       "type": "time",

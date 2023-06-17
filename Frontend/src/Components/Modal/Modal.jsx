@@ -26,7 +26,6 @@ function Modal({status}) {
 				{status === "success" ? <Player autoplay loop speed={2} src={truckSuccess} className='modal-truck-success' /> : null}
 				{status === "error" ? <Player autoplay loop speed={1} src={error} className='modal-error' /> : null}
 				{status === "deleteConfirmationTrip" ? <DeleteConfirmation item="trip"/> : null}
-				{status === "deleteConfirmationTown" ? <DeleteConfirmation item="town"/> : null}
 			</div>,
 			document.getElementById("modal")
 		)

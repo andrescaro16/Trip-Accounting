@@ -5,14 +5,11 @@ import { useStateContext } from '../../Context/useStateContext';
 
 function DeleteConfirmation({item}) {
 
-	const { setDeleteItemModal, setDeleteTrip, setDeleteTown } = useStateContext();
+	const { setDeleteItemModal, setDeleteTrip } = useStateContext();
 
 	function onConfirmation() {
 		if(item === "trip"){
 			setDeleteTrip(true);
-			setDeleteItemModal(false);
-		} else if (item === "town") {
-			setDeleteTown(true);
 			setDeleteItemModal(false);
 		}
 	}
