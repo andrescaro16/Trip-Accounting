@@ -13,6 +13,7 @@ function Towns() {
 
 	const [towns, setTowns] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [orderedTowns, setOrderedTowns] = useState([]);
 
 	// ----------------------------[Get towns]----------------------------
 	useEffect(() => {
@@ -30,6 +31,20 @@ function Towns() {
 		fetchtowns();
 	}, []);
 
+	useEffect(() => {
+		setOrderedTowns(towns.sort((a, b) => {
+		  const routeA = a.attributes.route.toLowerCase();
+		  const routeB = b.attributes.route.toLowerCase();
+		  if (routeA < routeB) {
+			return -1;
+		  } else if (routeA > routeB) {
+			return 1;
+		  } else {
+			return 0;
+		  }
+		}));
+	}, [ towns ]);
+	  
 	function dotsInPrices(data) {
 		const towns = data?.map((town) => {
 			const viatic = town.attributes.viatic.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -68,7 +83,7 @@ function Towns() {
 				</>
 			)}
 			<Accordion variant="separated" >
-				{towns?.map((town) => (
+				{orderedTowns?.map((town) => (
 					<Accordion.Item value={`${town.id}`} key={`${town.id}`} className='accordion-item'>
 						<Accordion.Control>
 							<div className='control'>
