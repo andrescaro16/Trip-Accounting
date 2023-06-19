@@ -14,7 +14,8 @@
 	width: 80%;
 	max-width: 1000px;
 	align-items: center;
-	margin-left: -60px;
+	margin-left: 0px;
+	margin-top: 16px;
 }
 
 .truck-trip-history {

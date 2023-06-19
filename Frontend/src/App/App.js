@@ -5,6 +5,7 @@ import { TripForm } from "../Pages/TripForm/TripForm";
 import { Report } from "../Pages/Report/Report";
 import { TripHistory } from "../Pages/TripHistory/TripHistory";
 import { Towns } from "../Pages/Towns/Towns";
+import { EditTrip } from "../Pages/EditTrip/EditTrip";
 
 function App() {
 
@@ -22,11 +23,9 @@ function App() {
           <Route path="/report" element={<Report />} />
 
           <Route path="/trip-history" element={<TripHistory />} />
-          <Route path="/edit-trip/:id" element={<h1>Edit Trip</h1>} />
+          <Route path="/edit-trip/:id" element={<EditTrip />} />
 
           <Route path="/towns" element={<Towns />} />
-          <Route path="/add-town" element={<h1>Add Town</h1>} />
-          <Route path="/edit-town/:id" element={<h1>Edit Town</h1>} />
 
         </Routes>
     

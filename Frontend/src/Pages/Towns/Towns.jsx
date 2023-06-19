@@ -88,9 +88,6 @@ function Towns() {
 						<Accordion.Control>
 							<div className='control'>
 								<span className='route'>{town.attributes.route}</span>
-								<div className='right-container'>
-									<Link to={`/edit-town/${town.id}`} className='edit'><FiEdit color='#111'/></Link>
-								</div>
 							</div>
 						</Accordion.Control>
 						<Accordion.Panel>

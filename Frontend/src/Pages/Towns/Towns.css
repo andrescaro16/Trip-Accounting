@@ -14,8 +14,9 @@
 	width: 80%;
 	max-width: 1000px;
 	align-items: center;
-	margin-left: -60px;
-	margin-bottom: 16px;
+	margin-left: 40px;
+	margin-bottom: 52px;
+	margin-top: 60px;
 }
 
 .house-towns {
@@ -104,7 +105,7 @@
 @media (max-width: 650px) {
 	.towns-header-container {
 		width: 130%;
-		margin-left: 10px;
+		margin-left: 30px;
 	}
 	.towns-title {
 		font-size: 5vw;

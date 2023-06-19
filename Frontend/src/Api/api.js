@@ -95,13 +95,22 @@ export async function getTrips(){
 }
 
 export async function getTrip(id){
-    const { result: trip, loading, error } = FetchData(`trips/${id}?populate=*`);
-    const result = {
-        trip,
-        loading,
-        error,
-    };
-    return result;
+    try {
+        const options = {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${process.env.REACT_APP_STRAPI_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: null,
+        };
+        const res = await fetch(`${port}trips/${id}?populate=*`, options);
+        const trip = await res.json();
+        return trip;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
 export async function postTrip(data){
@@ -115,6 +124,25 @@ export async function postTrip(data){
             body: JSON.stringify(data),
         };
         const res = await fetch(`${port}trips`, options);
+        const tripsResponse = await res.json();
+        return tripsResponse;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+export async function putTrip(id, data){
+    try {
+        const options = {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${process.env.REACT_APP_STRAPI_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        };
+        const res = await fetch(`${port}trips/${id}`, options);
         const tripsResponse = await res.json();
         return tripsResponse;
     } catch (error) {
