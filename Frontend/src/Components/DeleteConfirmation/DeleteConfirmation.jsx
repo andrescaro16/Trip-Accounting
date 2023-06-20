@@ -1,4 +1,5 @@
 import React from 'react';
+import './DeleteConfirmation.css';
 
 import { useStateContext } from '../../Context/useStateContext';
 
@@ -21,7 +22,7 @@ function DeleteConfirmation({item}) {
 	return (
 		<>
 		<div className='delete-confirmation'>
-			<h1 className='delete-confirmation-title'>¿Seguro que quieres eliminar este item?</h1>
+			<h1 className='delete-confirmation-title'>¿Seguro que quieres eliminar este viaje?</h1>
 			<div className='delete-confirmation-buttons-container'>
 				<button className='delete-confirmation-button' onClick={onConfirmation}>Sí</button>
 				<button className='delete-confirmation-button cancel' onClick={onCancel}>Cancelar</button>

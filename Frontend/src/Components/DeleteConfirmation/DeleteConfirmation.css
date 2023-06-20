@@ -3,5 +3,45 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 	width: 100%;
+}
+
+.delete-confirmation-buttons-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 24px;
+	width: 100%;
+}
+
+.delete-confirmation-button{
+	width: 100px;
+	margin: 0px 8px;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.delete-confirmation-button.cancel{
+	background-color: #fff;
+	color: #007bff;
+	border: 1px solid #007bff;
+}
+
+.delete-confirmation-button:hover{
+	background-color: #fff;
+	color: #007bff;
+	border: 1px solid #007bff;
+}
+
+.delete-confirmation-button.cancel:hover{
+	background-color: #007bff;
+	color: #fff;
 }

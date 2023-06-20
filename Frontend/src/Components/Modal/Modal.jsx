@@ -25,7 +25,9 @@ function Modal({status}) {
 			<div className={`modal ${isVisible ? "" : "hidden"}`}>
 				{status === "success" ? <Player autoplay loop speed={2} src={truckSuccess} className='modal-truck-success' /> : null}
 				{status === "error" ? <Player autoplay loop speed={1} src={error} className='modal-error' /> : null}
-				{status === "deleteConfirmationTrip" ? <DeleteConfirmation item="trip"/> : null}
+				<div className="deleteConfirmation-container">
+					{status === "deleteConfirmationTrip" ? <DeleteConfirmation item="trip"/> : null}
+				</div>
 			</div>,
 			document.getElementById("modal")
 		)
