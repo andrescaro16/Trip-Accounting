@@ -4,10 +4,14 @@ import Lottie from 'lottie-react';
 import truckAnimation from '../../Assets/Animations/truckAnimation.json';
 import './Login.css';
 
+import { useStateContext } from '../../Context/useStateContext';
+
 function Login() {
 
 	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState(false);
+
+	const { setTokenId } = useStateContext();
 
 	const navigate = useNavigate();
 
@@ -19,6 +23,7 @@ function Login() {
 	function onSubmit(event) {
 		event.preventDefault();
 		if(event.target[0].value === `${process.env.REACT_APP_USERNAME}` && event.target[1].value === `${process.env.REACT_APP_PASSWORD}`) {
+			setTokenId(true);
 			navigate('/homepage');
 		} else {
 			setError(true);

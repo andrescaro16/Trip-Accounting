@@ -7,6 +7,7 @@ export const StateContext = ({ children }) => {
 
 	const [deleteItemModal, setDeleteItemModal] = useState(false);
 	const [deleteTrip, setDeleteTrip] = useState(false);
+	const [tokenId, setTokenId] = useState(false);
 
 
 	return (
@@ -15,6 +16,8 @@ export const StateContext = ({ children }) => {
 			setDeleteItemModal,
 			deleteTrip,
 			setDeleteTrip,
+			tokenId,
+			setTokenId,
 		}}>
 			{children}
 		</Context.Provider>

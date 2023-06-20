@@ -6,6 +6,7 @@ import { Report } from "../Pages/Report/Report";
 import { TripHistory } from "../Pages/TripHistory/TripHistory";
 import { Towns } from "../Pages/Towns/Towns";
 import { EditTrip } from "../Pages/EditTrip/EditTrip";
+import PrivateRoutes from "../Utils/privateRoutes";
 
 function App() {
 
@@ -16,16 +17,15 @@ function App() {
         <Routes>
 
           <Route path="/" element={<Login />} />
-          <Route path="/homepage" element={<Homepage />} />
 
-          <Route path="/add-trip" element={<TripForm />} />
-
-          <Route path="/report" element={<Report />} />
-
-          <Route path="/trip-history" element={<TripHistory />} />
-          <Route path="/edit-trip/:id" element={<EditTrip />} />
-
-          <Route path="/towns" element={<Towns />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/homepage" element={<Homepage />} />
+            <Route path="/add-trip" element={<TripForm />} />
+            <Route path="/report" element={<Report />} />
+            <Route path="/trip-history" element={<TripHistory />} />
+            <Route path="/edit-trip/:id" element={<EditTrip />} />
+            <Route path="/towns" element={<Towns />} />
+          </Route>
 
         </Routes>
     
