@@ -40,12 +40,12 @@ function Login() {
 
 				<div className='login-content-container'>
 					<label className='login-label-username'>Nombre de usuario</label>
-					<input className='login-input-username' type='text' placeholder='Nombre de usuario'/>
+					<input className='login-input-username' type='text' placeholder='Nombre de usuario' required/>
 				</div>
 
 				<div className='login-content-container'>
 					<label className='login-label-password'>Contraseña</label>
-					<input className='login-input-password' type={showPassword ? 'text' : 'password'} placeholder='Contraseña'/>
+					<input className='login-input-password' type={showPassword ? 'text' : 'password'} placeholder='Contraseña' required/>
 					<button type='button' className='login-toggle-button' onClick={togglePassword} >
 						{showPassword ? 'Ocultar' : 'Mostrar'}
 					</button>

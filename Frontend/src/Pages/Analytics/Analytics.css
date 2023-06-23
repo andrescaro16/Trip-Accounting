@@ -1,0 +1,57 @@
+.analytics-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 90vw;
+	margin: auto;
+	text-align: center;
+}
+
+.money-wallet-analytics{
+	margin-top: 16px	!important;
+	width: 50%;
+}
+
+.analytics-title{
+	font-size: 30px;
+	font-weight: 600;
+	margin: 16px;
+}
+
+.month-picker-input{
+	margin: 32px;
+}
+
+.analytics{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.elem-analytics{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin: 16px;
+}
+
+.elem-analytics-title{
+	font-size: 20px;
+	font-weight: 600;
+	margin: 12px;
+}
+
+.elem-analytics-text{
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.no-data{
+	color: #ff0000;
+	opacity: 0.8;
+}
