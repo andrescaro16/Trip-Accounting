@@ -96,13 +96,13 @@ function Towns() {
 								<div className='panel-left'>
 									<div className='panel-left-container'>
 										<span className='panel-title'>Viáticos</span> <br />
-										<span className='panel-left-value'>{town.attributes.viatic}</span>
+										<span className='panel-left-value'>${town.attributes.viatic}</span>
 									</div>
 								</div>
 								<div className='panel-right'>
 									<div className='panel-right-container'>
 										<span className='panel-title'>Salario</span> <br />
-										<span className='panel-right-value'>{town.attributes.salary}</span>
+										<span className='panel-right-value'>${town.attributes.salary}</span>
 									</div>
 								</div>
 							</div>

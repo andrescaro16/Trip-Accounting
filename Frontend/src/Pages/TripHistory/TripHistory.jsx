@@ -211,7 +211,7 @@ function TripHistory() {
 										{trip.attributes.toll && (
 											<div className='panel-right-container'>
 												<span className='panel-title'>Costo de peajes</span> <br />
-												<span className='panel-right-value'>{trip.attributes.toll.price}</span>
+												<span className='panel-right-value'>${trip.attributes.toll.price}</span>
 											</div>
 										)}
 										<div className='panel-right-container'>
@@ -221,7 +221,7 @@ function TripHistory() {
 										{trip.attributes.extraCost && (
 											<div className='panel-right-container'>
 												<span className='panel-title'>Total de costo extra</span> <br />
-												<span className='panel-right-value'>{trip.attributes.extraCost?.price}</span>
+												<span className='panel-right-value'>${trip.attributes.extraCost?.price}</span>
 											</div>
 										)}
 									</div>
@@ -229,11 +229,11 @@ function TripHistory() {
 								<div className='panel-bottom'>
 									<div className='panel-bottom-container'>
 										<span className='panel-title'>Viáticos</span> <br />
-										<span className='panel-bottom-value'>{trip.attributes.town.data.attributes.viatic}</span>
+										<span className='panel-bottom-value'>${trip.attributes.town.data.attributes.viatic}</span>
 									</div>
 									<div className='panel-bottom-container'>
 										<span className='panel-title'>Salario</span> <br />
-										<span className='panel-bottom-value'>{trip.attributes.town.data.attributes.salary}</span>
+										<span className='panel-bottom-value'>${trip.attributes.town.data.attributes.salary}</span>
 									</div>
 									<button className='delete-button' onClick={() => onDeleteItem(trip.id)}>Eliminar</button>
 								</div>
