@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Accordion } from '@mantine/core';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { getTrips, deleteTrip as deleteTripApi } from '../../Api/api';
-import { Loading } from '../../Components/Loading/Loading';
+import { LoadingHistory } from '../../Components/LoadingHistory/LoadingHistory';
 import { Modal } from '../../Components/Modal/Modal';
 import truck from '../../Assets/Animations/truckDriving.json';
 import { FiEdit } from 'react-icons/fi';
@@ -123,14 +123,14 @@ function TripHistory() {
 			</div>
 			{loading && (
 				<>
-					<Loading />
-					<Loading />
-					<Loading />
-					<Loading />
-					<Loading />
-					<Loading />
-					<Loading />
-					<Loading />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
 				</>
 			)}
 			<Accordion variant="separated" >

@@ -1,10 +1,10 @@
 import React from 'react';
-import './Loading.css';
+import './LoadingHistory.css';
 
-function Loading() {
+function LoadingHistory() {
 	return (
 		<div className="loading-history-container"></div>
 	);
 }
 
-export { Loading };
+export { LoadingHistory };

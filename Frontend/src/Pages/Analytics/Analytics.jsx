@@ -5,11 +5,13 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import moneyWallet from '../../Assets/Animations/moneyWallet.json';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { getTrips } from '../../Api/api';
+import { LoadingCircle } from '../../Components/LoadingCircle/LoadingCircle';
 import './Analytics.css';
 
 
 function Analytics() {
 
+	const [loading, setLoading] = useState(true);
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [trips, setTrips] = useState([]);
 	const [tripsByMonth, setTripsByMonth] = useState([]);
@@ -34,6 +36,7 @@ function Analytics() {
 	
 	// -------------------------------[On change event]--------------------------------------
 	function onChangeSelectedDate(e) {
+		setLoading(true);
 		const date = addDays(new Date(e), 1);
 		setSelectedDate(date);
 	}
@@ -80,7 +83,9 @@ function Analytics() {
 		});
 		monthData =  dotsInPrices(monthData);
 		setMonthData(monthData);
+	}, [ tripsByMonth ]);
 
+	useEffect(() => {
 		let firstBiweeklyData = {
 			salary: 0,
 			viatic: 0,
@@ -96,7 +101,9 @@ function Analytics() {
 		});
 		firstBiweeklyData =  dotsInPrices(firstBiweeklyData);
 		setFirstBiweeklyData(firstBiweeklyData);
+	}, [ firstBiweekly ]);
 
+	useEffect(() => {
 		let secondBiweeklyData = {
 			salary: 0,
 			viatic: 0,
@@ -112,7 +119,12 @@ function Analytics() {
 		});
 		secondBiweeklyData =  dotsInPrices(secondBiweeklyData);
 		setSecondBiweeklyData(secondBiweeklyData);
-	}, [ tripsByMonth ]);
+
+		setLoading(false);
+	}, [ secondBiweekly ]);
+
+	
+	// -----------------------------------[Functions and constants]----------------------------------------
 
 	function dotsInPrices(data) {
 		data.salary ? data.salary = data.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : data.salary = 0;
@@ -181,40 +193,42 @@ function Analytics() {
 					onChange={onChangeSelectedDate}
 				/>
 				
-				<div className='analytics'>
-					{monthData.quantityTrips !== 0 ? (
-						<>
-							<div className='elem-analytics'>
-								<h2 className='elem-analytics-title'>Mes de {months[selectedDate.getMonth()]}</h2>
-								<p> <span className='elem-analytics-text'>Salario del mes:</span> ${monthData.salary}</p>
-								<p> <span className='elem-analytics-text'>Viáticos del mes:</span> ${monthData.viatic}</p>
-								<p> <span className='elem-analytics-text'>Cantidad de viajes del mes:</span> {monthData.quantityTrips}</p>
-							</div>
+				{loading ? (<LoadingCircle />) : (
+					<div className='analytics'>
+						{monthData.quantityTrips !== 0 ? (
+							<>
+								<div className='elem-analytics'>
+									<h2 className='elem-analytics-title'>Mes de {months[selectedDate.getMonth()]}</h2>
+									<p> <span className='elem-analytics-text'>Salario del mes:</span> ${monthData.salary}</p>
+									<p> <span className='elem-analytics-text'>Viáticos del mes:</span> ${monthData.viatic}</p>
+									<p> <span className='elem-analytics-text'>Cantidad de viajes del mes:</span> {monthData.quantityTrips}</p>
+								</div>
 
-							<div className='elem-analytics'>
-								<h2 className='elem-analytics-title'>Primera quincena</h2>
-								{firstBiweeklyData.quantityTrips !== 0 ? (
-									<>
-										<p> <span className='elem-analytics-text'>Salario:</span> ${firstBiweeklyData.salary}</p>
-										<p> <span className='elem-analytics-text'>Viáticos:</span> ${firstBiweeklyData.viatic}</p>
-										<p> <span className='elem-analytics-text'>Cantidad de viajes:</span> {firstBiweeklyData.quantityTrips}</p>
-									</>
-								) : (<p className='no-data'>No se tienen viajes registrados de esta quincena</p>)}
-							</div>
+								<div className='elem-analytics'>
+									<h2 className='elem-analytics-title'>Primera quincena</h2>
+									{firstBiweeklyData.quantityTrips !== 0 ? (
+										<>
+											<p> <span className='elem-analytics-text'>Salario:</span> ${firstBiweeklyData.salary}</p>
+											<p> <span className='elem-analytics-text'>Viáticos:</span> ${firstBiweeklyData.viatic}</p>
+											<p> <span className='elem-analytics-text'>Cantidad de viajes:</span> {firstBiweeklyData.quantityTrips}</p>
+										</>
+									) : (<p className='no-data'>No se tienen viajes registrados de esta quincena</p>)}
+								</div>
 
-							<div className='elem-analytics'>
-								<h2 className='elem-analytics-title'>Segunda quincena</h2>
-								{secondBiweeklyData.quantityTrips !== 0 ? (
-									<>
-										<p> <span className='elem-analytics-text'>Salario:</span> ${secondBiweeklyData.salary}</p>
-										<p> <span className='elem-analytics-text'>Viáticos:</span> ${secondBiweeklyData.viatic}</p>
-										<p> <span className='elem-analytics-text'>Cantidad de viajes:</span> {secondBiweeklyData.quantityTrips}</p>
-									</>
-								) : (<p className='no-data'>No se tienen viajes registrados de esta quincena</p>)}
-							</div>
-						</>
-					) : (<p className='no-data'>No se tienen viajes registrados de este mes</p>)}
-				</div>
+								<div className='elem-analytics'>
+									<h2 className='elem-analytics-title'>Segunda quincena</h2>
+									{secondBiweeklyData.quantityTrips !== 0 ? (
+										<>
+											<p> <span className='elem-analytics-text'>Salario:</span> ${secondBiweeklyData.salary}</p>
+											<p> <span className='elem-analytics-text'>Viáticos:</span> ${secondBiweeklyData.viatic}</p>
+											<p> <span className='elem-analytics-text'>Cantidad de viajes:</span> {secondBiweeklyData.quantityTrips}</p>
+										</>
+									) : (<p className='no-data'>No se tienen viajes registrados de esta quincena</p>)}
+								</div>
+							</>
+						) : (<p className='no-data'>No se tienen viajes registrados de este mes</p>)}
+					</div>
+				)}
 
 			</div>
 		</>

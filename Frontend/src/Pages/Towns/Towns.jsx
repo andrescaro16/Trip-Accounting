@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Accordion } from '@mantine/core';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { getTowns } from '../../Api/api';
-import { Loading } from '../../Components/Loading/Loading';
+import { LoadingHistory } from '../../Components/LoadingHistory/LoadingHistory';
 import house from '../../Assets/Animations/house.json';
 import { FiEdit } from 'react-icons/fi';
 import './Towns.css';
@@ -73,13 +73,14 @@ function Towns() {
 			</div>
 			{loading && (
 				<>
-					<Loading /><Loading />
-					<Loading />
-					<Loading />
-					<Loading />
-					<Loading />
-					<Loading />
-					<Loading />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
+					<LoadingHistory />
 				</>
 			)}
 			<Accordion variant="separated" >
